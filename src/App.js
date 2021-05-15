@@ -1,25 +1,35 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+import Product from './components/Product';
+
 
 function App() {
+  const[data, setData] = useState([]);
+  
+  useEffect(() => {
+      fetch("http://ecommerce-cart-flow-backend.herokuapp.com/products")
+        .then(res => {
+          if(res.status===200)
+            return res.json();
+          else
+            throw Error('Not Found');
+        })
+        .then(data => setData(data))
+        .catch(err => console.log(err));
+        console.log(data);
+  },[]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      <Product data={data} />
     </div>
   );
 }
+
+
+
 
 export default App;

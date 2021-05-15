@@ -1,0 +1,46 @@
+#navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1em;
+    background-color: lightskyblue;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+#cart-logo {
+    width: 40px;
+    height: 40px;
+}
+
+#navbar-div {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-link {
+    text-decoration: none;
+    margin-right: 2em;
+}
+
+
+@media (max-width: 420px) {
+    #navbar {
+        flex-direction: column;
+    }
+
+    #navbar-div {
+        flex-direction: column;
+    }
+
+    #navbar-span {
+        margin-bottom: 0.5em;
+    }
+
+    .navbar-link {
+        margin-bottom: 0.5em;
+        margin-right: 0;
+    }
+}
